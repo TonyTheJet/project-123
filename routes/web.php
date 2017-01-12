@@ -101,28 +101,26 @@ Route::get('/seller', function(){
     return 'seller home';
 });
 
-Route::get('/seller/products/edit/{', function(){
-    return 'look at my cart, isn\'t it neat?';
+Route::get('/seller/products/edit/{product-slug}', function($product_slug){
+    return "editing product {$product_slug}";
 });
 
-Route::get('/cart', function(){
-    return 'look at my cart, isn\'t it neat?';
+Route::get('/seller/products/submit', function(){
+    return 'submit a new product';
 });
 
-Route::get('/cart', function(){
-    return 'look at my cart, isn\'t it neat?';
+Route::get('/seller/sales', function(){
+    return 'get sales data';
 });
 
-Route::get('/cart', function(){
-    return 'look at my cart, isn\'t it neat?';
+Route::get('/terms-and-conditions', function(){
+    return 'read these awesome terms and conditions';
 });
 
+Route::get('/view-orders', function(){
+    return 'view all of the user\'s orders';
+});
 
-/*
-/seller/products/submit
-/seller/sales
-/terms-and-conditions
-/view-orders
-/view-orders/{ORDER_ID}
-
- */
+Route::get('/view-orders/{order_id}', function($order_id){
+    return "look at order {$order_id}";
+});
