@@ -11,6 +11,8 @@
 |
 */
 
+
+//open (non-signed-in) pages
 /**
  * home page
  */
@@ -27,6 +29,7 @@ Route::get('/about', function(){
     return 'about our wonderful company';
 });
 
+
 /**
  * cart page
  */
@@ -36,15 +39,6 @@ Route::get('/cart', function(){
 });
 
 
-Route::get('/checkout', function(){
-    return 'yo, check me out';
-});
-
-
-Route::get('/checkout/thanks/{order_id}', function($order_id){
-    return "ORDER ID {$order_id}";
-});
-
 Route::get('/contact', function(){
     return 'contact us. do it now.';
 });
@@ -53,20 +47,8 @@ Route::get('/create-account', function(){
     return 'create a new account';
 });
 
-Route::get('/get-credits', function(){
-    return 'get yo-self some stuff';
-});
-
-Route::get('/get-credits/thanks/{order_id}', function($order_id){
-    return 'thanks for getting yourself some stuff with order ' . $order_id;
-});
-
 Route::get('/login', function(){
     return 'log in. now!';
-});
-
-Route::get('/logout', function(){
-    return 'log out. immediately!';
 });
 
 Route::get('/privacy-policy', function(){
@@ -97,30 +79,57 @@ Route::get('/products/types', function(){
     return 'info about the various types of products';
 });
 
-Route::get('/seller', function(){
-    return 'seller home';
-});
-
-Route::get('/seller/products/edit/{product-slug}', function($product_slug){
-    return "editing product {$product_slug}";
-});
-
-Route::get('/seller/products/submit', function(){
-    return 'submit a new product';
-});
-
-Route::get('/seller/sales', function(){
-    return 'get sales data';
-});
-
 Route::get('/terms-and-conditions', function(){
     return 'read these awesome terms and conditions';
 });
+//end open pages
 
-Route::get('/view-orders', function(){
-    return 'view all of the user\'s orders';
-});
 
-Route::get('/view-orders/{order_id}', function($order_id){
-    return "look at order {$order_id}";
+//signed-in group
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/checkout', function () {
+        return 'yo, check me out';
+    });
+
+    Route::get('/checkout/thanks/{order_id}', function($order_id){
+        return "ORDER ID {$order_id}";
+    });
+
+    Route::get('/get-credits', function(){
+        return 'get yo-self some stuff';
+    });
+
+    Route::get('/get-credits/thanks/{order_id}', function($order_id){
+        return 'thanks for getting yourself some stuff with order ' . $order_id;
+    });
+
+    Route::get('/logout', function(){
+        return 'log out. immediately!';
+    });
+
+    Route::get('/seller', function(){
+        return 'seller home';
+    });
+
+    Route::get('/seller/products/edit/{product-slug}', function($product_slug){
+        return "editing product {$product_slug}";
+    });
+
+    Route::get('/seller/products/submit', function(){
+        return 'submit a new product';
+    });
+
+    Route::get('/seller/sales', function(){
+        return 'get sales data';
+    });
+
+    Route::get('/view-orders', function(){
+        return 'view all of the user\'s orders';
+    });
+
+    Route::get('/view-orders/{order_id}', function($order_id){
+        return "look at order {$order_id}";
+    });
+
 });
+//end signed-in pages
