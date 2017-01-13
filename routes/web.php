@@ -87,6 +87,11 @@ Route::get('/terms-and-conditions', function(){
 
 //signed-in group
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/become-a-seller', function(){
+        return 'become a seller';
+    });
+
     Route::get('/checkout', function () {
         return 'yo, check me out';
     });
@@ -107,6 +112,24 @@ Route::group(['middleware' => 'auth'], function () {
         return 'log out. immediately!';
     });
 
+    Route::get('/view-orders', function(){
+        return 'view all of the user\'s orders';
+    });
+
+    Route::get('/view-orders/{order_id}', function($order_id){
+        return "look at order {$order_id}";
+    });
+
+    Route::get('/wishlist', function(){
+
+        return "look at my wish list";
+    });
+
+});
+//end signed-in pages
+
+//signed in and a seller
+Route::group(['middleware' => 'seller'], function(){
     Route::get('/seller', function(){
         return 'seller home';
     });
@@ -122,14 +145,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/seller/sales', function(){
         return 'get sales data';
     });
-
-    Route::get('/view-orders', function(){
-        return 'view all of the user\'s orders';
-    });
-
-    Route::get('/view-orders/{order_id}', function($order_id){
-        return "look at order {$order_id}";
-    });
-
 });
-//end signed-in pages
+//end signed in and a seller
