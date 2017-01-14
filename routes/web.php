@@ -18,7 +18,7 @@
  */
 Route::get('/', function () {
     //return view('welcome');
-    return 'tony rocks the world';
+    return view('page');
 });
 
 
