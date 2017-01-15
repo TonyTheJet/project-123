@@ -42,9 +42,6 @@ Route::get('/contact', function(){
     return 'contact us. do it now.';
 });
 
-Route::get('/create-account', function(){
-    return 'create a new account';
-});
 
 Route::get('forgot-password', function(){
     return 'forgot password page';
