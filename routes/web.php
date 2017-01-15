@@ -46,8 +46,12 @@ Route::get('/create-account', function(){
     return 'create a new account';
 });
 
+Route::get('forgot-password', function(){
+    return 'forgot password page';
+});
+
 Route::get('/login', function(){
-    return 'log in. now!';
+    return view('login', ['title' => 'Login']);
 });
 
 Route::get('/privacy-policy', function(){
@@ -146,3 +150,15 @@ Route::group(['middleware' => 'seller'], function(){
     });
 });
 //end signed in and a seller
+
+
+//posts
+Route::post('/login/post', function(){
+    return 'posted login info';
+});
+//end posts
+
+
+
+
+
