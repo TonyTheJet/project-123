@@ -46,11 +46,11 @@ return [
 
     'connections' => [
 
-        'sqlite' => [
+        /*'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
             'prefix' => '',
-        ],
+        ],*/
 
         'mysql' => [
             'driver' => 'mysql',
@@ -64,7 +64,7 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
-        ],
+        ]/*,
 
         'pgsql' => [
             'driver' => 'pgsql',
@@ -77,7 +77,7 @@ return [
             'prefix' => '',
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
 
     ],
 

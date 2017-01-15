@@ -50,9 +50,6 @@ Route::get('forgot-password', function(){
     return 'forgot password page';
 });
 
-Route::get('/login', function(){
-    return view('login', ['title' => 'Login']);
-});
 
 Route::get('/privacy-policy', function(){
     return 'read this very exciting privacy policy!';
@@ -90,6 +87,10 @@ Route::get('/terms-and-conditions', function(){
 
 //signed-in group
 Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/account-settings', function(){
+        return 'my account settings';
+    });
 
     Route::get('/become-a-seller', function(){
         return 'become a seller';
@@ -153,12 +154,14 @@ Route::group(['middleware' => 'seller'], function(){
 
 
 //posts
-Route::post('/login/post', function(){
-    return 'posted login info';
-});
+
 //end posts
 
 
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
