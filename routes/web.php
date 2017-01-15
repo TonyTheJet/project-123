@@ -17,8 +17,7 @@
  * home page
  */
 Route::get('/', function () {
-    //return view('welcome');
-    return view('page');
+    return view('page', ['title' => 'Home']);
 });
 
 

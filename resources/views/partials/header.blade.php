@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>123SVG.com - @yield('title')</title>
+    <title>123SVG.com - {{$title}}</title>
+    {{ Html::style('css/app.css') }}
 </head>
 <body>
     <div class="container-fluid">
