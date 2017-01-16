@@ -17,7 +17,7 @@
  * home page
  */
 Route::get('/', function () {
-    return view('page', ['title' => 'Home']);
+    return view('home', ['title' => 'Home']);
 });
 
 
@@ -111,6 +111,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', function(){
         return 'log out. immediately!';
+    });
+
+    Route::get('/my-account', function(){
+        return view('my-account');
     });
 
     Route::get('/view-orders', function(){
