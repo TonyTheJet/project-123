@@ -165,3 +165,7 @@ Route::group(['middleware' => 'seller'], function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
