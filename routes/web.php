@@ -17,7 +17,7 @@
  * home page
  */
 Route::get('/', function () {
-    return view('page', ['title' => 'Home']);
+    return view('home', ['title' => 'Home']);
 });
 
 
@@ -42,9 +42,6 @@ Route::get('/contact', function(){
     return 'contact us. do it now.';
 });
 
-Route::get('/create-account', function(){
-    return 'create a new account';
-});
 
 Route::get('forgot-password', function(){
     return 'forgot password page';
@@ -114,6 +111,10 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/logout', function(){
         return 'log out. immediately!';
+    });
+
+    Route::get('/my-account', function(){
+        return view('my-account');
     });
 
     Route::get('/view-orders', function(){

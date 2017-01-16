@@ -1,8 +1,6 @@
-                </div><!--.col-xs-12-->
-            </div><!--#main-body-->
-            <div id="page-footer" class="row">
-                footer here
-            </div>
-        </div><!--.container-fluid-->
+        </div><!--.row-->
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
     </body>
 </html>
