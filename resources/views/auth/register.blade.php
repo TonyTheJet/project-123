@@ -61,6 +61,31 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="phone" class="col-md-4 control-label">Phone</label>
+                            <div class="col-md-6">
+                                <input id="phone" type="tel" minlength="6" title="Phone Number (Format: +99(99)9999-9999)" name="phone" value="{{ old('phone') }}">
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4">
+                                <input type="checkbox" name="send_newsletter" id="send-newsletter" value="1"  {!! (old('send_newsletter') == '1') ? 'checked' : '' !!}><label for="send-newsletter">Yes, please send me emails about promotions.</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-4">
+                                <input type="checkbox" name="send_sms" id="send-sms" value="1"  {!! (old('send_sms') == '1') ? 'checked' : '' !!}><label for="send-sms">Yes, please send me text messages about promotions.</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
