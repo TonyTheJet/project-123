@@ -25,7 +25,7 @@ Route::get('/', function () {
  * about the company
  */
 Route::get('/about', function(){
-    return 'about our wonderful company';
+    return view('about', ['title' => 'About 123SVG']);
 });
 
 
@@ -34,26 +34,21 @@ Route::get('/about', function(){
  */
 
 Route::get('/cart', function(){
-    return 'look at my cart, isn\'t it neat?';
+    return view('cart', ['title' => 'My Cart']);
 });
 
 
 Route::get('/contact', function(){
-    return 'contact us. do it now.';
-});
-
-
-Route::get('forgot-password', function(){
-    return 'forgot password page';
+    return view('contact', ['title' => 'Contact Us']);
 });
 
 
 Route::get('/privacy-policy', function(){
-    return 'read this very exciting privacy policy!';
+    return view('privacy-policy', ['title' => 'Privacy Policy']);
 });
 
 Route::get('/products', function(){
-    return 'look at all of these products!';
+    return view('shop.products', ['title' => 'All Products']);
 });
 
 Route::get('/products/{filter_data}', function($filter_data){
@@ -77,7 +72,7 @@ Route::get('/products/types', function(){
 });
 
 Route::get('/terms-and-conditions', function(){
-    return 'read these awesome terms and conditions';
+    return view('terms-and-conditions', ['Terms & Conditions']);
 });
 //end open pages
 

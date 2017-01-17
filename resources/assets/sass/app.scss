@@ -13,3 +13,13 @@
 .navbar{
   margin-bottom: 0;
 }
+
+// Footer
+#footer{
+  padding: 12px 0;
+}
+#footer a{
+  color: $text-color;
+  display: inline-block;
+  margin: 0 8px;
+}

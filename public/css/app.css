@@ -7692,4 +7692,14 @@ button.close {
   margin-bottom: 0;
 }
 
+#footer {
+  padding: 12px 0;
+}
+
+#footer a {
+  color: #636b6f;
+  display: inline-block;
+  margin: 0 8px;
+}
+
 /*# sourceMappingURL=app.css.map */
