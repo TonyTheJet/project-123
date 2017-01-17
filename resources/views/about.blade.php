@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    about us
+    <div class="col-md-8 col-md-offset-2">
+        about us
+    </div>
 @endsection

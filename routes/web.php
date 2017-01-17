@@ -72,7 +72,7 @@ Route::get('/products/types', function(){
 });
 
 Route::get('/terms-and-conditions', function(){
-    return view('terms-and-conditions', ['Terms & Conditions']);
+    return view('terms-and-conditions', ['title' => 'Terms & Conditions']);
 });
 //end open pages
 
@@ -80,49 +80,58 @@ Route::get('/terms-and-conditions', function(){
 //signed-in group
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/account-settings', function(){
-        return 'my account settings';
-    });
 
     Route::get('/become-a-seller', function(){
-        return 'become a seller';
+        return view('account.seller.become-a-seller', ['title' => 'Become a Seller']);
     });
 
     Route::get('/checkout', function () {
-        return 'yo, check me out';
+        return view('shop.checkout', ['title' => 'Checkout']);
     });
 
     Route::get('/checkout/thanks/{order_id}', function($order_id){
-        return "ORDER ID {$order_id}";
+        return view('shop.checkout-thanks', ['order_id' => $order_id . ' LOCK THIS DOWN!', 'title' => 'Thanks for Your Order!']);
+    });
+
+    Route::get('/checkout/thanks', function(){
+        return redirect('/view-orders');
     });
 
     Route::get('/get-credits', function(){
-        return 'get yo-self some stuff';
+        return view('shop.get-credits', ['title' => 'Get Credits']);
     });
 
-    Route::get('/get-credits/thanks/{order_id}', function($order_id){
-        return 'thanks for getting yourself some stuff with order ' . $order_id;
+    Route::get('/get-credits/thanks/{credit_order_id}', function($credit_order_id){
+        return view('shop.get-credits-thanks', ['credit_order_id' => $credit_order_id . ' LOCK THIS DOWN!', 'title' => 'Thanks for Your Order!']);
     });
 
-    Route::get('/logout', function(){
-        return 'log out. immediately!';
+    Route::get('/get-credits/thanks', function(){
+        return redirect('/my-account/credit-purchase-activity');
     });
 
     Route::get('/my-account', function(){
-        return view('my-account');
+        return view('account.my-account', ['title' => 'My Account']);
+    });
+
+    Route::get('/my-account/credit-purchase-activity', function(){
+        return view('account.credit-purchase-activity', ['Credit Purchase Activity']);
+    });
+
+    Route::get('/my-account/settings', function(){
+        return view('account.settings', ['title' => 'Account Settings']);
     });
 
     Route::get('/view-orders', function(){
-        return 'view all of the user\'s orders';
+        return view('account.view-orders', ['title' => 'My Orders']);
     });
 
     Route::get('/view-orders/{order_id}', function($order_id){
-        return "look at order {$order_id}";
+        return view('account.view-order', ['order_id' => "{$order_id} (BUT LOCK THIS DOWN)", 'title' => "View Order {$order_id}"]);
     });
 
     Route::get('/wishlist', function(){
 
-        return "look at my wish list";
+        return view('account.wishlist', ['title' => 'My Wishlist']);
     });
 
 });
@@ -130,20 +139,24 @@ Route::group(['middleware' => 'auth'], function () {
 
 //signed in and a seller
 Route::group(['middleware' => 'seller'], function(){
-    Route::get('/seller', function(){
-        return 'seller home';
+    Route::get('/account/seller', function(){
+        return view('account.seller.dashboard', ['title' => 'My Seller Dashboard']);
     });
 
-    Route::get('/seller/products/edit/{product-slug}', function($product_slug){
-        return "editing product {$product_slug}";
+    Route::get('/account/seller/products', function(){
+        return view('account.seller.products', ['title' => 'My Products']);
     });
 
-    Route::get('/seller/products/submit', function(){
-        return 'submit a new product';
+    Route::get('/account/seller/products/edit/{product-slug}', function($product_slug){
+        return view('account.seller.products.edit-product', ['title' => 'Edit Product [will add product eventually]']);
     });
 
-    Route::get('/seller/sales', function(){
-        return 'get sales data';
+    Route::get('/account/seller/products/submit', function(){
+        return view('account.seller.products.submit-product', ['title' => 'Submit New Product']);
+    });
+
+    Route::get('/account/seller/sales', function(){
+        return view('account.seller.sales', ['title' => 'Seller Sales Data']);
     });
 });
 //end signed in and a seller
@@ -153,11 +166,11 @@ Route::group(['middleware' => 'seller'], function(){
 
 //end posts
 
-
-
-
-
-
+//include routes for out-of-the-box auth
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+
+//common redirects
+Route::get('/home', function(){
+    return redirect('/');
+});
