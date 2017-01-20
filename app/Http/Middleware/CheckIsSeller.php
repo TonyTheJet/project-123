@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\Seller;
 
 class CheckIsSeller
 {
@@ -16,8 +17,10 @@ class CheckIsSeller
      */
     public function handle($request, Closure $next)
     {
-        print_r(Auth::user()->load('stuff'));
-        echo 'checking is seller';
+        $seller = new Seller();
+        if (!$seller->newQuery()->where('user_id', '=', Auth::user()['attributes']['id'])->applyScopes()->exists()):
+            return redirect('/account/become-a-seller');
+        endif;
 
         return $next($request);
     }

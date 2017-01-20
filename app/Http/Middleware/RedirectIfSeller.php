@@ -9,6 +9,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
+use App\Seller;
 class RedirectIfSeller
 {
 
@@ -20,7 +22,10 @@ class RedirectIfSeller
     public function handle($request, Closure $next){
 
         //check if the user is a seller, and if so, hold the phones!
-        echo "checking if seller!\n";
+        $seller = new Seller();
+        if ($seller->newQuery()->where('user_id', '=', Auth::user()['attributes']['id'])->applyScopes()->exists()):
+            return redirect('/account/seller');
+        endif;
 
         return $next($request);
     }
