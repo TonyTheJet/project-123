@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Seller;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
 
 class ApplyToBecomeSellerController extends Controller
 {
@@ -26,10 +27,6 @@ class ApplyToBecomeSellerController extends Controller
     }
 
     public function showApplicationForm(Request $request){
-
-        //make sure the user isn't already a seller
-
-
         return view('account.seller.become-a-seller', ['title' => 'Become a Seller']);
     }
 }

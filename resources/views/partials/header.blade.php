@@ -62,6 +62,12 @@
                                 <li>
                                     <a href="{{ url('/my-account') }}">Account Home</a>
                                 </li>
+                                @if (Auth::user()['attributes']['is_admin'])
+                                    <li>
+                                        <a href="{{ url('/admin') }}">Admin Dashboard</a>
+                                    </li>
+                                @endif
+
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();

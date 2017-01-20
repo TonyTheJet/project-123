@@ -81,8 +81,6 @@ Route::get('/terms-and-conditions', function(){
 Route::group(['middleware' => 'auth'], function () {
 
 
-    Route::get('/become-a-seller', 'Seller\ApplyToBecomeSellerController@showApplicationForm');
-
     Route::get('/checkout', function () {
         return view('shop.checkout', ['title' => 'Checkout']);
     });
@@ -135,6 +133,11 @@ Route::group(['middleware' => 'auth'], function () {
 });
 //end signed-in pages
 
+//signed in and not a seller
+Route::group(['middleware' => 'user_but_not_seller'], function(){
+    Route::get('/account/become-a-seller', 'Seller\ApplyToBecomeSellerController@showApplicationForm');
+});
+
 //signed in and a seller
 Route::group(['middleware' => 'seller'], function(){
     Route::get('/account/seller', function(){
@@ -162,6 +165,14 @@ Route::group(['middleware' => 'seller'], function(){
 //include routes for out-of-the-box auth
 Auth::routes();
 
+
+//admin section
+Route::group(['middleware' => 'admin'], function(){
+    Route::get('/admin', function() {
+        return view('admin.dashboard', ['title' => 'Admin Dashboard']);
+    });
+});
+//end admin section
 
 //common redirects
 Route::get('/home', function(){

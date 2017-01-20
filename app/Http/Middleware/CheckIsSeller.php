@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CheckIsSeller
 {
@@ -15,8 +16,8 @@ class CheckIsSeller
      */
     public function handle($request, Closure $next)
     {
-
-
+        print_r(Auth::user()->load('stuff'));
+        echo 'checking is seller';
 
         return $next($request);
     }
