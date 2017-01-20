@@ -133,10 +133,12 @@ Route::group(['middleware' => 'auth'], function () {
 });
 //end signed-in pages
 
+
 //signed in and not a seller
 Route::group(['middleware' => 'user_but_not_seller'], function(){
     Route::get('/account/become-a-seller', 'Seller\ApplyToBecomeSellerController@showApplicationForm');
 });
+//end signed in and not a seller
 
 //signed in and a seller
 Route::group(['middleware' => 'seller'], function(){
