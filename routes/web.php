@@ -81,9 +81,7 @@ Route::get('/terms-and-conditions', function(){
 Route::group(['middleware' => 'auth'], function () {
 
 
-    Route::get('/become-a-seller', function(){
-        return view('account.seller.become-a-seller', ['title' => 'Become a Seller']);
-    });
+    Route::get('/become-a-seller', 'Seller\ApplyToBecomeSellerController@showApplicationForm');
 
     Route::get('/checkout', function () {
         return view('shop.checkout', ['title' => 'Checkout']);
@@ -160,11 +158,6 @@ Route::group(['middleware' => 'seller'], function(){
     });
 });
 //end signed in and a seller
-
-
-//posts
-
-//end posts
 
 //include routes for out-of-the-box auth
 Auth::routes();

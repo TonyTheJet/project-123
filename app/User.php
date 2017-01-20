@@ -25,9 +25,7 @@ class User extends Authenticatable
 
     protected $guarded = [
         'credit_balance',
-        'is_admin',
-        'is_seller',
-        'seller_data'
+        'is_admin'
     ];
 
     /**
