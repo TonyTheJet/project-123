@@ -10,7 +10,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
-use App\Seller;
+use App\Models\Eloquent\Seller;
 class RedirectIfSeller
 {
 
