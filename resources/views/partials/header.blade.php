@@ -60,7 +60,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ url('/my-account') }}">Account Home</a>
+                                    <a href="{{ url('/account') }}">My Account</a>
                                 </li>
                                 @if (Auth::user()['attributes']['is_admin'])
                                     <li>
@@ -68,6 +68,14 @@
                                     </li>
                                 @endif
 
+                                @if (Auth::user()['attributes']['is_seller'])
+                                    <li>
+                                        <a href="{{ url('/account/seller') }}">Seller Dashboard</a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a href="{{ url('/account/settings') }}">Info/Settings</a>
+                                </li>
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                        onclick="event.preventDefault();

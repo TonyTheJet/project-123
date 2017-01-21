@@ -22,7 +22,7 @@ class CheckIsAdmin
 
 
         if (!Auth::user()['is_admin']):
-            return redirect('/my-account');
+            return redirect('/account');
         endif;
 
         return $next($request);

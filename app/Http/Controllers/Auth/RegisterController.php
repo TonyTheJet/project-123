@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/my-account';
+    protected $redirectTo = '/account';
 
     /**
      * Create a new controller instance.
@@ -68,7 +68,8 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'phone' => !empty($data['phone']) ? $data['phone'] : null,
-            'send_newsletter' => $data['send_newsletter'] ?? false
+            'send_newsletter' => $data['send_newsletter'] ?? false,
+            'send_sms' => $data['send_sms'] ?? false
         ]);
     }
 }

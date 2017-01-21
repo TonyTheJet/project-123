@@ -9,5 +9,6 @@
 
         <!-- Scripts -->
         <script src="/js/app.js"></script>
+        @yield('per_page_js')
     </body>
 </html>

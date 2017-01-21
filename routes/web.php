@@ -102,20 +102,20 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/get-credits/thanks', function(){
-        return redirect('/my-account/credit-purchase-activity');
+        return redirect('/account/credit-purchase-activity');
     });
 
-    Route::get('/my-account', function(){
+    Route::get('/account', function(){
         return view('account.my-account', ['title' => 'My Account']);
     });
 
-    Route::get('/my-account/credit-purchase-activity', function(){
+    Route::get('/account/credit-purchase-activity', function(){
         return view('account.credit-purchase-activity', ['Credit Purchase Activity']);
     });
 
-    Route::get('/my-account/settings', function(){
-        return view('account.settings', ['title' => 'Account Settings']);
-    });
+    Route::get('/account/settings', 'Account\UpdateUserInfoController@showForm');
+    Route::post('/account/settings', 'Account\UpdateUserInfoController@submit');
+    Route::get('/account/settings/updated', 'Account\UpdateUserInfoController@updated');
 
     Route::get('/view-orders', function(){
         return view('account.view-orders', ['title' => 'My Orders']);
