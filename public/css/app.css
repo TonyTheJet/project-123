@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+/*@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);*/
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -7692,6 +7692,10 @@ button.close {
   margin-bottom: 0;
 }
 
+#main {
+  padding: 20px 0;
+}
+
 #footer {
   padding: 12px 0;
 }
@@ -7700,6 +7704,10 @@ button.close {
   color: #636b6f;
   display: inline-block;
   margin: 0 8px;
+}
+
+.margin-top-md {
+  margin-top: 24px;
 }
 
 /*# sourceMappingURL=app.css.map */

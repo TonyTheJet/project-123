@@ -1,6 +1,6 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+/*@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);*/
 
 // Variables
 @import "variables";
@@ -14,6 +14,11 @@
   margin-bottom: 0;
 }
 
+// Main wrapper
+#main{
+  padding: 20px 0;
+}
+
 // Footer
 #footer{
   padding: 12px 0;
@@ -23,3 +28,9 @@
   display: inline-block;
   margin: 0 8px;
 }
+
+// margins
+.margin-top-md{
+  margin-top: 24px;
+}
+// end margins

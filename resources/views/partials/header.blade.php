@@ -12,7 +12,6 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -61,7 +60,21 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="{{ url('/my-account') }}">Account Home</a>
+                                    <a href="{{ url('/account') }}">My Account</a>
+                                </li>
+                                @if (Auth::user()['attributes']['is_admin'])
+                                    <li>
+                                        <a href="{{ url('/admin') }}">Admin Dashboard</a>
+                                    </li>
+                                @endif
+
+                                @if (Auth::user()['attributes']['is_seller'])
+                                    <li>
+                                        <a href="{{ url('/account/seller') }}">Seller Dashboard</a>
+                                    </li>
+                                @endif
+                                <li>
+                                    <a href="{{ url('/account/settings') }}">Info/Settings</a>
                                 </li>
                                 <li>
                                     <a href="{{ url('/logout') }}"

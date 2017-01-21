@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models\Eloquent;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -26,8 +26,7 @@ class User extends Authenticatable
     protected $guarded = [
         'credit_balance',
         'is_admin',
-        'is_seller',
-        'seller_data'
+        'is_seller'
     ];
 
     /**

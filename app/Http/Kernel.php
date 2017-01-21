@@ -36,10 +36,21 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        //custom middleware groups
+        'admin' => [
+            'auth',
+            \App\Http\Middleware\CheckIsAdmin::class
+        ],
         'seller' => [
             'auth',
             \App\Http\Middleware\CheckIsSeller::class
+        ],
+        'user_but_not_seller' => [
+            'auth',
+            \App\Http\Middleware\RedirectIfSeller::class
         ]
+        //end custom middleware groups
     ];
 
     /**

@@ -81,10 +81,6 @@ Route::get('/terms-and-conditions', function(){
 Route::group(['middleware' => 'auth'], function () {
 
 
-    Route::get('/become-a-seller', function(){
-        return view('account.seller.become-a-seller', ['title' => 'Become a Seller']);
-    });
-
     Route::get('/checkout', function () {
         return view('shop.checkout', ['title' => 'Checkout']);
     });
@@ -106,20 +102,20 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::get('/get-credits/thanks', function(){
-        return redirect('/my-account/credit-purchase-activity');
+        return redirect('/account/credit-purchase-activity');
     });
 
-    Route::get('/my-account', function(){
+    Route::get('/account', function(){
         return view('account.my-account', ['title' => 'My Account']);
     });
 
-    Route::get('/my-account/credit-purchase-activity', function(){
+    Route::get('/account/credit-purchase-activity', function(){
         return view('account.credit-purchase-activity', ['Credit Purchase Activity']);
     });
 
-    Route::get('/my-account/settings', function(){
-        return view('account.settings', ['title' => 'Account Settings']);
-    });
+    Route::get('/account/settings', 'Account\UpdateUserInfoController@showForm');
+    Route::post('/account/settings', 'Account\UpdateUserInfoController@submit');
+    Route::get('/account/settings/updated', 'Account\UpdateUserInfoController@updated');
 
     Route::get('/view-orders', function(){
         return view('account.view-orders', ['title' => 'My Orders']);
@@ -136,6 +132,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 //end signed-in pages
+
+
+//signed in and not a seller
+Route::group(['middleware' => 'user_but_not_seller'], function(){
+    Route::get('/account/become-a-seller', 'Seller\ApplyToBecomeSellerController@showApplicationForm');
+});
+//end signed in and not a seller
 
 //signed in and a seller
 Route::group(['middleware' => 'seller'], function(){
@@ -161,14 +164,17 @@ Route::group(['middleware' => 'seller'], function(){
 });
 //end signed in and a seller
 
-
-//posts
-
-//end posts
-
 //include routes for out-of-the-box auth
 Auth::routes();
 
+
+//admin section
+Route::group(['middleware' => 'admin'], function(){
+    Route::get('/admin', function() {
+        return view('admin.dashboard', ['title' => 'Admin Dashboard']);
+    });
+});
+//end admin section
 
 //common redirects
 Route::get('/home', function(){

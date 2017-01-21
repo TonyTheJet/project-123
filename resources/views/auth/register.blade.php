@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2" id="main">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
@@ -75,7 +75,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-4">
-                                <input type="checkbox" name="send_newsletter" id="send-newsletter" value="1"  {!! (old('send_newsletter') == '1') ? 'checked' : '' !!}><label for="send-newsletter">Yes, please send me emails about promotions.</label>
+                                <input type="checkbox" name="send_newsletter" id="send-newsletter" value="1"  checked><label for="send-newsletter">Yes, please send me emails about promotions.</label>
                             </div>
                         </div>
 
