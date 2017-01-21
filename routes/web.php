@@ -169,16 +169,8 @@ Route::group(['middleware' => 'seller'], function(){
 //include routes for out-of-the-box auth
 Auth::routes();
 
-<<<<<<< HEAD
-Route::get('/home', 'HomeController@index');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-=======
 
 //common redirects
 Route::get('/home', function(){
     return redirect('/');
 });
->>>>>>> bc7c1e0b2ef1a40503db7ac7ee9af4f5c6d35be3
