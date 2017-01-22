@@ -42,6 +42,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="form-control" name="password" minlength="6" autocomplete="new-password">
                                     <small>(leave blank to keep the same password)</small>
+                                    <div id="password-text-hierarchy-text"></div>
                                     @if ($errors->has('password'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('password') }}</strong>
@@ -96,4 +97,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('per_page_js')
+    <script type="text/javascript" src="/js/password-score-combined.js"></script>
 @endsection

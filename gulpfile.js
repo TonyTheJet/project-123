@@ -16,4 +16,6 @@ require('laravel-elixir-vue-2');
 elixir(function(mix) {
     mix.sass('app.scss')
        .webpack('app.js');
+
+    mix.scripts(['libraries/jquery-3.1.1.js', 'libraries/password-score.js', 'libraries/password-score-options.js', 'libraries/password-strength-meter.js', 'password-strength-checker.js'], 'public/js/password-score-combined.js');
 });
