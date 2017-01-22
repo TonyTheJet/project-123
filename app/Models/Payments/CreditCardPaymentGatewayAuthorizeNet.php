@@ -6,7 +6,7 @@
  * Time: 1:54 AM
  */
 
-namespace App;
+namespace App\Models\Payments;
 
 
 class CreditCardPaymentGatewayAuthorizeNet extends CreditCardPaymentGateway

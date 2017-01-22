@@ -6,7 +6,7 @@
  * Time: 1:56 PM
  */
 
-namespace App;
+namespace App\Models\Payments;
 
 
 abstract class CreditCardPaymentGateway

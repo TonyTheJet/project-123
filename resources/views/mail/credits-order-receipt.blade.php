@@ -1,0 +1,1 @@
+receipt for credits order
