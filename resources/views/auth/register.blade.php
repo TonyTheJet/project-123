@@ -41,9 +41,9 @@
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6" id="password-tooltip-hierarchy-viewport">
                                 <input id="password" type="password" class="form-control" name="password" required>
-
+                                <div id="password-text-hierarchy-text"></div>
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -98,4 +98,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('per_page_js')
+    <script type="text/javascript" src="/js/password-score-combined.js"></script>
 @endsection
