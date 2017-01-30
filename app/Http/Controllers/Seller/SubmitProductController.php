@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Seller;
 use App\Models\Eloquent\DigitalProduct;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Eloquent\DigitalProductType;
 
 class SubmitProductController extends Controller
 {
@@ -21,14 +22,17 @@ class SubmitProductController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showSubmissionForm(DigitalProduct $product = null){
-        return view('account.seller.products.submit-product', ['product' => $product, 'title' => 'Submit New Product']);
+
+        $product_types = DigitalProductType::all()->where('active', true);
+
+        return view('account.seller.products.submit-product', ['product' => $product, 'product_types' => $product_types, 'title' => 'Submit New Product']);
     }
 
     /**
      * @param Request $request
      */
     public function submit(Request $request){
-        echo 'submitted!';
+        print_r($request->all());
         exit();
     }
 }

@@ -10,12 +10,24 @@
                         <form action="{{ url('/account/seller/products/submit') }}" method="post">
                             {{csrf_field()}}
                             <div class="form-group">
-                                <label for=""
-                                <select class="form-control">
-
-                                </select>
+                                <label for="type_id" class="control-label col-xs-12 col-sm-6 col-md-4">Product Type: </label>
+                                <div class="col-xs-12 col-sm-6 col-md-8">
+                                    <select class="form-control" name="type_id">
+                                        <option>Select Product Type</option>
+                                        @foreach ($product_types as $type)
+                                            <option value="{{ $type->id }}" data-notes="{{ $type->notes }}">{{ $type->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if ($errors->has('type_id'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('type_id') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
                             </div>
-                            <button type="submit">Submit</button>
+                            <div class="col-xs-12 col-sm-offset-6 col-md-offset-4">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                            </div>
                         </form>
                     </div>
                 </div>
