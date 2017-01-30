@@ -18,7 +18,14 @@ class CheckIsSeller
     public function handle($request, Closure $next)
     {
         $seller = new Seller();
-        if (!$seller->newQuery()->where('user_id', '=', Auth::user()['attributes']['id'])->applyScopes()->exists()):
+        if (
+            !$seller->newQuery()
+                ->where('user_id', '=', Auth::user()['attributes']['id'])
+                ->where('active', '=', true)
+                ->where('is_approved', '=', true)
+                ->applyScopes()
+                ->exists()
+        ):
             return redirect('/account/become-a-seller');
         endif;
 
