@@ -154,9 +154,10 @@ Route::group(['middleware' => 'seller'], function(){
         return view('account.seller.products.edit-product', ['title' => 'Edit Product [will add product eventually]']);
     });
 
-    Route::get('/account/seller/products/submit', function(){
-        return view('account.seller.products.submit-product', ['title' => 'Submit New Product']);
-    });
+    //submit
+    Route::get('/account/seller/products/submit', 'Seller\SubmitProductController@showSubmissionForm');
+    Route::get('/account/seller/products/submit/{$product}', 'Seller\SubmitProductController@showSubmissionForm');
+    Route::post('/account/seller/products/submit', 'Seller\SubmitProductController@submit');
 
     Route::get('/account/seller/sales', function(){
         return view('account.seller.sales', ['title' => 'Seller Sales Data']);
