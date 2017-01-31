@@ -25,7 +25,17 @@ class SubmitProductController extends Controller
 
         $product_types = DigitalProductType::all()->where('active', true);
 
-        return view('account.seller.products.submit-product', ['product' => $product, 'product_types' => $product_types, 'title' => 'Submit New Product']);
+        return view('account.seller.products.submit-product', [
+            'description_max_length' => DigitalProduct::DESCRIPTION_MAX_LENGTH,
+            'description_min_length' => DigitalProduct::DESCRIPTION_MIN_LENGTH,
+            'price_max' => DigitalProduct::PRICE_MAX,
+            'price_min' => DigitalProduct::PRICE_MIN,
+            'product' => $product,
+            'product_types' => $product_types,
+            'thumbnail_height' => DigitalProduct::THUMBNAIL_HEIGHT,
+            'thumbnail_width' => DigitalProduct::THUMBNAIL_WIDTH,
+            'title' => 'Submit New Product']
+        );
     }
 
     /**
